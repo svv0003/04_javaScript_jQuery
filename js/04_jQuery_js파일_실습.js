@@ -31,7 +31,7 @@ $(function () {
     // addClass removeClass 활용해서 4순위 class 스타일 추가하고 적용 설정
     // <style> 클래스 명칭. red{} .green{}
     // 모든 값이 채워져 있다면 성공 메세지를 초록색으로 표시, 아니라면 빨간색으로 표시
-    
+
     /*
     if (name && email && message) {
       $("#status")
@@ -41,7 +41,7 @@ $(function () {
       $("#status").text("모든 항목을 입력해주세요.").css("color", "red");
     }
       */
-     
+
     if (name && email && message) {
       $("#status")
         .toggleClass("green")
