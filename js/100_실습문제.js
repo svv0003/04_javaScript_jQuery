@@ -39,8 +39,8 @@ $(function () {
   // 문제 6: 항목 추가
   let itemCount = 1;
   $("#p6-addBtn").click(function () {
-    $("p6-myList").append(itemCount);
-    itemCount++;
+    $("#p6-myList").append("<li>새로운 항목 " + itemCount + "</li>");
+    ++itemCount;
     // HINT: itemCount를 1 증가시키고, .append()를 사용해 #p6-myList에 새로운 '<li>'를 추가하세요.
   });
 
@@ -60,20 +60,47 @@ $(function () {
   let count = 0;
   $("#p9-increaseBtn").click(function () {
     ++count;
-    $("p9-countDisplay").text("count");
+    $("#p9-countDisplay").text(count);
     // HINT: count 변수를 1 증가시키고, #p9-countDisplay에 .text()로 표시하세요.
   });
   $("#p9-decreaseBtn").click(function () {
     --count;
-    $("p9-countDisplay").text("count");
+    $("#p9-countDisplay").text(count);
     // HINT: count 변수를 1 감소시키고, #p9-countDisplay에 .text()로 표시하세요.
   });
 
   // 문제 10: 애니메이션
   $("#p10-animateBtn").click(function () {
-    $("#p10-myBox").animate();
+    $("#p10-myBox").animate(
+      {
+        left: 300,
+        top: 300,
+        width: "300px",
+        opacity: 0.5,
+      },
+      1500,
+      function(){
+        $("#p10-myBox").css("backgroundColor", "red");
+      }
+    );
+    /*
+    $("#p10-myBox").animate(
+      {
+        left: 300,
+        top: 300,
+        width: "300px",
+        opacity: 0.5,
+      },
+      1500,
+      function(){
+        $("#p10-myBox").css("backgroundColor", "red");
+      }
+    );
+    */
     // HINT: .animate() 메서드를 사용하세요.
     // 첫 번째 인자로 { width: "300px", opacity: 0.5 } 형태의 CSS 객체를,
     // 두 번째 인자로 시간(1500)을 전달합니다.
   });
 });
+
+// animate({css 속성 정의}, 시간, 콜백 함수)
