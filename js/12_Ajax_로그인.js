@@ -37,7 +37,7 @@ $(function () {
 
         // users는 배열 형태
         // users.username (X) -> users[username] (O)
-        if (data.users[userID]{                                   // 사용자가 존재할 때
+        if (data.users[userID]){                                   // 사용자가 존재할 때
           if (data.users[userID].password === password) {         // 사용자도 존재하고, 비밀번호도 일치할 때
             $("#result").html(
               `로그인 성공! 환영합니다. ${data.users[userID].name}님`
@@ -46,11 +46,12 @@ $(function () {
             $("#로그아웃기능").show();
           } else {                                                 // 사용자가 존재하지만 비밀번호 일치하지 않을 때
             $("#result").html("일치하는 비밀번호가 없습니다.");
-            
           }
         } else {
-          $("#result").html("존재하는 아이디가 없습니다.")
-      }, error: function () {
+          $("#result").html("존재하는 아이디가 없습니다.");
+        }
+      },
+      error: function () {
         alert("데이터를 가져오는데 실패했습니다.");
       },
     });
