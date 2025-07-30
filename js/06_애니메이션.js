@@ -36,9 +36,38 @@ $(() => {
     $(this).addClass("active");
     // 모든 .tab-content를 slideUp 하고, 해당 탭만 slideDown 하기
     // 메소드 .slideUp() .slideDown() 기본 속도는 400ms
-    $(".tab-content").slideUp();
+    $(".tab-content").slideUp(1);
     $("#" + targetTab).slideDown();
   })
   // .data()
-  // $("#" + targetTab)
+  //  data-tab="tab1/2/3"
+  // $("#" + targetTab) : # + 선택한 탭(targetTab)
+
+
+  // 문제 3: 프로그레스 바
+  $("#startProgress").click(function(){
+    $("#progressBar").animate({
+      // 클릭되면 가로 100% 채우고 2초 뒤에 무언가를 할 것이다. (무언가, 시간초는 필수 X)
+      width: "100%",
+    }, 2000, function(){
+      // 2000=2초 후 실행할 기능
+      // 기존 progressBar 내부 "0%" 텍스트를 width 100%로 만들고 나면 텍스트를 "100%"로 변경하겠다.
+      $("#progressBar").text("100%");
+    })
+  })
+  $("#resetProgress").click(function(){
+    // $("#progressBar").css("width", "0%");
+    // $("#progressBar").text("0%");
+    $("#progressBar").css("width", "0%").text("0%");
+  })
+
+  // 문제 4: 3D 카드 플립 효과
+  $("#flipCard").click(function(){
+    $(this).toggleClass("flipped");
+  })
+
+
+
+
+
 });
