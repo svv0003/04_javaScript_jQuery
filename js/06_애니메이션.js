@@ -66,7 +66,33 @@ $(() => {
     $(this).toggleClass("flipped");
   })
 
+  // 문제 5: 드롭 다운 메뉴
+  /*
+  .hover()  : 마우스가 요소에 올라갔을 때 메소드(행동=기능)
+  .active() : 마우스로 요소를 선택했을 때 메소드(행동=기능)
 
+  $(선택자).hover(
+    function(){
+      // 기능 1번 : 마우스가 요소에 올라갔을 때 실행할 기능
+    },
+    function(){
+      // 기능 2번 : 마우스가 요소를 벗어났을 때 실행할 기능
+    }
+  )
+
+  $(선택자).hover(mouseEnter함수, mouseLeave함수);
+
+  */
+  $(".dropdown").hover(
+    function(){
+      $("#dropdownMenu").slideDown(200);
+
+    },
+    function(){
+      $("#dropdownMenu").slideUp(200);
+
+    }
+  )
 
 
 
