@@ -19,6 +19,7 @@ $(function () {
       for (let i = 0; i < data.length; i++) {
         if (price == data[i].price) {
           $("#result").html(`${data[i].name} - ${data[i].price}원`);
+          break;
         } else {
           $("#result").html("해당하는 가격의 과일은 존재하지 않습니다.");
         }
