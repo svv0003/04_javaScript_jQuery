@@ -20,6 +20,7 @@ $(function () {
       $("#result").html(`
         <div>총 ${totalBooks} 권의 도서가 존재합니다.</div>
         `);
+        
       if (data.books[bookTitle]) {
         // 책 제목이 존재한다면
         console.log("a", data);
@@ -40,7 +41,7 @@ $(function () {
         } else {
           // 제목은 같지만 저자가 다른 경우
           console.log("c", data);
-          $("#result").html(`검색한 도서의 저자가 ${author}와 일치하지 않습니다.`)
+          $("#result").html(`검색한 도서의 저자가 목록 도서의 ${author}와 일치하지 않습니다.`)
         }
       } else {
         // 책 제목이 존재하지 않는다면
