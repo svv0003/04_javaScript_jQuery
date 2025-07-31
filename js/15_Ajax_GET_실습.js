@@ -153,7 +153,67 @@ function 문제5번기능() {
 }
 
 // 문제 6 : 여러 게시물 목록
-// 문제 7 : 날씨 정보
+// https://jsonplaceholder.typicode.com/posts?_limit=5
+function 문제6번기능() {
+  $.get("https://jsonplaceholder.typicode.com/posts?_limit=5")
+  .done(function (data) {
+    // data가 배열 = 목록 = 리스트 형태로 다수 존재할 경우
+    //  (for문 대신) data.map() 배열 형태로 하나씩 꺼내서 나열하는 메소드 사용하기
+    $("#result6").html(
+      data.map(
+        (i) => `<p><strong>${i.title}</strong></p>`
+    ));
+  });
+}
+
+// 문제 7 : 유저 정보
+// https://jsonplaceholder.typicode.com/users
+function 문제7번기능() {
+  $.get("https://jsonplaceholder.typicode.com/users")
+  .done(function(data){
+    $("#result7").html(
+      data.map(
+        (user) =>
+        `
+        <p>닉네임 : ${user.username}<p>
+        <p>이메일 : ${user.email}</p><br>
+        `
+      )
+    )
+  })
+}
+
 // 문제 8 : 검색 기능
+// https://jsonplaceholder.typicode.com/users
+function 문제8번기능(){
+  // filter() 기능을 사용해서 원하는 소비자를 검색으로 걸러내기
+  // 
+  const searchName = $("#searchName").val();
+  $.get("https://jsonplaceholder.typicode.com/users")
+    .done(function(data){
+      $("#result8").html(
+      data.filter((user) => user.name == searchName)                  // 1. filter() 검색에 해당하는 사람들만 목록(리스트) 형태로 조회하고,
+          .map((user) => `<p>${user.name}</p><p>${user.email}</p>`)   // 2. map()으로 하나씩 꺼내서 나열하기
+    )}
+  )
+}
+
+/*
+filter()
+배열 = 목록 = 리스트에서 조건에 맞는 것들만 골라내는 기능
+배열.filter(조건함수)
+
+data                                            url에서 가져온 data를
+    .filter(                                    걸러낼게요
+            (user) =>                           data를 하나씩 꺼내서 user 변수명으로 확인
+                      user.name == searchName)  user 내의 name과 소비자가 검색한 이름이 같은 것들만
+  
+data                                            url에서 가져온 data를 담고 있는 변수명
+    .filter(                                    data에서 가져온 data를 걸러내는 작업 진행
+            (user) =>                           우선은 data=user 서로 갖고 있는 리스트가 동일하지만
+                      user.name == searchName)  추후 소비자가 찾는 이름과 user 내에서 name 키가 일치하는 값만 user 변수명에 담아놓기 설정
+
+*/
+
 // 문제 9 : 카테고리별 데이터
 // 문제 10 : 종합 실습
