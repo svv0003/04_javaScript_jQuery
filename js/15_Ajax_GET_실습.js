@@ -216,4 +216,22 @@ data                                            url에서 가져온 data를 담�
 */
 
 // 문제 9 : 카테고리별 데이터
+// https://jsonplaceholder.typicode.com/albums/{albumId}/photos?_limit=3
+function 문제9번기능(){
+  const albumId = $("#albumId").val();  // 사용자가 선택한 value 값 가져오기
+  $.get(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos?_limit=3`)
+    .done(function(data){
+      $("#result9").html(
+        // select 선택을 진행할 때 filter 사용하라는 조건이 있을 수도 있지만
+        // 주소 값에서 작성된 모든 데이터를 조회할 때는 굳이 filter()를 사용하지 않아도 된다.
+        data.map((photo) =>
+        `
+        <p><strong>title : ${photo.title}</strong></p>
+        <p><strong>url : ${photo.url}</strong></p>
+        <img src=${photo.url}><br>`)
+      )
+      
+    })
+}
 // 문제 10 : 종합 실습
+
