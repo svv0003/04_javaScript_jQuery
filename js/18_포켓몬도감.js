@@ -1,27 +1,24 @@
 // https://pokeapi.co/api/v2/pokemon/681
 // https://pokeapi.co/api/v2/pokemon-species/aegislash
 
-
 let nowPage = 1;
 
 $(function () {
-    pokeInfo(1);                  // 클릭하지 않아도 자동으로 1번부터 포켓몬 호출
+  pokeInfo(1); // 클릭하지 않아도 자동으로 1번부터 포켓몬 호출
 
-  $("#prevBtn").click(()=>{
-    if (nowPage>1){
+  $("#prevBtn").click(() => {
+    if (nowPage > 1) {
       --nowPage;
       pokeInfo(nowPage);
-      $("#pageInfo").html(`${nowPage}페이지`)
     } else {
       alert("첫 번째 페이지입니다.");
     }
   });
-  
-  $("#nextBtn").click(()=>{
+
+  $("#nextBtn").click(() => {
     ++nowPage;
     pokeInfo(nowPage);
-    $("#pageInfo").html(`${nowPage}페이지`)
-  })
+  });
 });
 
 /*
@@ -44,8 +41,8 @@ function range(start, end) {
 function pokeInfo(page) {
   const startId = (page - 1) * 10 + 1;
   const ids = range(startId, startId + 9);
-  $("#pokemonContainer").html("");        // 페이지 변경될 때마다 기존 데이터 지우기
-
+  $("#pokemonContainer").html(""); // 페이지 변경될 때마다 기존 데이터 지우기
+  $("#pageInfo").html(`${page}페이지`);
   ids.map((i) => {
     $.get(`https://pokeapi.co/api/v2/pokemon/${i}`).done(function (data) {
       $("#pokemonContainer").html(
