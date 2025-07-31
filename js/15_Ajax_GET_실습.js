@@ -228,7 +228,7 @@ function 문제9번기능(){
         `
         <p><strong>title : ${photo.title}</strong></p>
         <p><strong>url : ${photo.url}</strong></p>
-        <img src=${photo.url}><br>`)
+        <img src="${photo.url}"><br>`)
       )
       
     })
