@@ -24,8 +24,12 @@ function 뉴스불러오기(){
 
 function 검색하기(){
   const newsType = $("#categoryFilter").val();
+  const search = $("#search").val();
   $.get(URL)
     .done(function(data){
+      if (search && newsType){
+        
+      }
       $("#newsContainer").html(
         data.filter((news) => news.category == newsType)
           .map((news) =>

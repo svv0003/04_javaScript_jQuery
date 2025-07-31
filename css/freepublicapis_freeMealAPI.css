@@ -1,0 +1,138 @@
+/* 전체 페이지 스타일 */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #fff8e1; /* 크림 치즈 타르트 느낌의 부드러운 크림색 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 컨테이너 스타일 */
+#container {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+  max-width: 600px;
+  width: 90%;
+}
+
+/* 제목 스타일 */
+h1 {
+  color: #d81b60; /* 타르트의 베리 느낌을 살린 색상 */
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* 버튼 컨테이너 스타일 */
+#buttons.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* 버튼 간 간격 */
+  flex-wrap: wrap; /* 반응형으로 버튼이 넘치면 줄바꿈 */
+}
+
+/* 버튼 스타일 */
+button.tab {
+  padding: 12px 24px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #f06292; /* 핑크 톤으로 타르트 느낌 강조 */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.tab:hover {
+  background-color: #ec407a; /* 호버 시 약간 더 진한 색상 */
+  transform: translateY(-2px); /* 살짝 떠오르는 효과 */
+}
+
+button.tab:active {
+  transform: translateY(0); /* 클릭 시 원래 위치로 */
+}
+
+button.tab.active {
+  background-color: #ec407a; /* 활성화 시 더 진한 색상 */
+  transform: translateY(-2px);
+}
+
+/* 다음 메뉴 버튼 스타일 */
+button#nextMeal.tab {
+  background-color: #2196f3; /* 구분을 위해 파란색 */
+}
+button#nextMeal.tab:hover,
+button#nextMeal.tab.active {
+  background-color: #1976d2;
+  transform: translateY(-2px);
+}
+
+/* 슬라이드 콘텐츠 스타일 */
+.slide {
+  display: none;
+  margin: 10px auto;
+  max-width: 100%;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.slide.active {
+  display: block;
+}
+
+/* 텍스트 콘텐츠 스타일 */
+#strInstructions {
+  white-space: pre-wrap;
+}
+#strMeal,
+#strArea,
+#strInstructions,
+#strIngredient {
+  margin: 5px 0;
+  color: #333;
+}
+
+/* 이미지 스타일 */
+#strMealThumb img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 유튜브 iframe 스타일 */
+#strYoutube iframe {
+  width: 100%;
+  max-width: 500px;
+  height: 281px; /* 16:9 비율 */
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 재료 리스트 스타일 */
+#strIngredient p {
+  margin: 5px 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+  button.tab {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+  #container {
+    padding: 15px;
+  }
+}

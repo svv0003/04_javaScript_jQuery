@@ -13,22 +13,25 @@
     <link rel="icon" type="image/png" href="../img/pumkin.png" />
   </head>
   <body>
-    <h1>크림 치즈 타르트</h1>
-    <select id="ingredient">
-      <option id="strIngredient0">재료</option>
-      <option id="strIngredient1">밀가루</option>
-      <option id="strIngredient2">버터</option>
-      <option id="strIngredient3">밀가루</option>
-      <option id="strIngredient4">밀가루</option>
-      <option id="strIngredient5">밀가루</option>
-      <option id="strIngredient6">밀가루</option>
-      <option id="strIngredient7">밀가루</option>
-      <option id="strIngredient8">밀가루</option>
-      <option id="strIngredient9">밀가루</option>
-      <option id="strIngredient10">밀가루</option>
-      <option id="strIngredient11">밀가루</option>
-      <option id="strIngredient12">밀가루</option>
-    </select>
+    <div id="container">
+      <h1>랜덤 음식</h1>
+
+      <div id="buttons" class="tab-buttons">
+        <button class="tab" data-tab="meal">음식</button>
+        <button class="tab" data-tab="strMealThumb">사진</button>
+        <button class="tab" data-tab="strYoutube">영상</button>
+        <button class="tab" data-tab="strIngredient">재료</button>
+        <button class="tab" id="nextMeal">다음 메뉴</button>
+      </div>
+
+      <div class="slide" id="strMeal"></div>
+      <div class="slide" id="strArea"></div>
+      <div class="slide" id="strInstructions"></div>
+      <div class="slide" id="strMealThumb"></div>
+      <div class="slide" id="strYoutube"></div>
+      <div class="slide" id="strIngredient"></div>
+    </div>
+
     <script src="../js/freepublicapis_freeMealAPI.js"></script>
   </body>
 </html>
