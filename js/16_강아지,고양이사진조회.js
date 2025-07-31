@@ -37,7 +37,7 @@ function getCats() {
 }
 
 // 문제 2: 강아지 사진 5장 가져오기
-// https://api.thedogapi.com/v1/images/search?limit=3
+// https://api.thedogapi.com/v1/images/search?limit=10
 /*
 힌트:
 0. slice() 이용해서 0번부터 4번까지 가져오기 설정
@@ -92,6 +92,12 @@ function getSelectedAnimal() {
 }
 
 // 문제 4: 원하는 개수만큼 고양이 사진 가져오기
+// count 개수만큼 고양이 사진 가져오기
+// Array.from({length: count}, (_, i) => ...) 패턴 사용
+/*
+.join("")
+마지막에 ,나 ` 설정되는 것을 "" 빈 값으로 처리하는 기능
+*/
 function getCatsWithCount() {
   const count = $("#photoCount").val();
 
@@ -103,20 +109,47 @@ function getCatsWithCount() {
   }
 
   $("#result4").html('<div class="loading">고양이 사진을 가져오는 중...</div>');
-
-  // 여기에 코드 작성
-  // count 개수만큼 고양이 사진 가져오기
-  // Array.from({length: count}, (_, i) => ...) 패턴 사용
+  
+  $.get("https://api.thecatapi.com/v1/images/search?limit=3")
+  .done(function (data) {
+    const cats = data.slice(0, count);
+    $("#result4").html(
+      `<div class="photo-grid">
+      ${
+      cats.map(
+        (cat) => `
+          <div class="photo-item">
+            <img src="${cat.url}">
+            <p>고양이 ID : ${cat.id}
+          </div>
+      `
+      ).join("")}
+      </div>`
+    );
+  })
+  .fail();
 }
 
 // 문제 5: 랜덤 동물 사진 갤러리
+// https://api.thecatapi.com/v1/images/search?limit=10
+// https://api.thedogapi.com/v1/images/search?limit=10
+// 고양이 4장 + 강아지 4장 = 총 8장
+// 두 배열을 합쳐서 하나의 갤러리로 표시
+// concat()이나 spread operator(...) 사용 가능
 function getRandomGallery() {
   $("#result5").html(
     '<div class="loading">🎲 랜덤 동물 갤러리를 만드는 중...</div>'
   );
-
-  // 여기에 코드 작성
-  // 고양이 4장 + 강아지 4장 = 총 8장
-  // 두 배열을 합쳐서 하나의 갤러리로 표시
-  // concat()이나 spread operator(...) 사용 가능
+  animal("cat");
+  animal("dog");
+}
+function animal(동물이름) {
+  $.get(`https://api.the${동물이름}api.com/v1/images/search?limit=10`)
+  .done(function(data){
+    const count = data.slice(0,5);
+    $("#result5").html(
+      $("#result5").html() + count.map((i) => `<img src="${i.url}">`)
+    );
+    }
+  );
 }
