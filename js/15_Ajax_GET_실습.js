@@ -15,15 +15,13 @@ $(function () {
 // 문제 1 : 기본 텍스트 가져오기
 // https://jsonplaceholder.typicode.com/posts/1
 function 문제1번기능() {
-  $.get("https://jsonplaceholder.typicode.com/posts/1", function (data) {
-    $("#btn1").click(function () {
-      $("#result1").html(
-        `
+  $.get("https://jsonplaceholder.typicode.com/posts/1").done(function (data) {
+    $("#result1").html(
+      `
         <div class="success"><strong>게시물 제목 : </strong>${data.title}</div>
         <div class="success"><strong>게시물 내용 : </strong>${data.body}</div>
         `
-      );
-    });
+    );
   });
 }
 
@@ -83,7 +81,7 @@ function 문제3번기능() {
   $.get("https://api.quotable.io/random")
     .done(function (data) {
       $("#result3").html(
-      `
+        `
       <div class="success">
         <blockquote>${data.content}</blockquote>
         <strong>${data.author}</strong>
@@ -91,19 +89,69 @@ function 문제3번기능() {
       `
       );
     })
-    .fail(
+    .fail(function () {
       $("#result3").html(
         `
       <div class="error">
       명언을 가져오는데 실패했습니다.
       </div>
       `
-      )
-    );
+      );
+    });
 }
 
 // 문제 4 : 로딩 상태 표시
+// https://jsonplaceholder.typicode.com/posts/1/comments
+function 문제4번기능() {
+  $.get("https://jsonplaceholder.typicode.com/posts/1/comments")
+    .done(function (data) {
+      $("#result4").html(
+        `
+      <div class="success">
+      댓글 ${data.length - 1}개를 성공적으로 불러왔습니다.<br><br>
+      1번째 댓글 : ${data[0].body}
+      `
+      );
+    })
+    .fail(() => {
+      $("#result4").html(
+        `
+      <div class="error">
+      댓글을 불러오지 못했습니다.
+      </div>
+        `
+      );
+    });
+}
+
 // 문제 5 : 에러 처리
+// https://jsonplaceholder.typicode.com/posts/999999
+function 문제5번기능() {
+  $.get("https://jsonplaceholder.typicode.com/posts/999999")
+    .done(function () {
+      $("#result5").html(
+        `
+      <div class="success">
+      데이터를 성공적으로 가져왔습니다.
+      </div>
+      `
+      );
+    })
+    // error 발생했을 때도 매개변수에 data 라는 변수명 사용 가능하지만
+    // err 또는 xhr를 변수명으로 사용하는 것이 개발자간의 규칙!
+    .fail(function (xhr) {
+      $("#result5").html(
+        `
+        <div class="error">
+        에러 발생!<br>
+        <strong>상태 코드 : </strong>${xhr.status}<br>
+        <strong>에러 메세지 : </strong>${xhr.statusText}<br>
+        </div>
+        `
+      );
+    });
+}
+
 // 문제 6 : 여러 게시물 목록
 // 문제 7 : 날씨 정보
 // 문제 8 : 검색 기능
