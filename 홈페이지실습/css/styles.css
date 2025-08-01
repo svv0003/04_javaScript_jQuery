@@ -179,3 +179,7 @@ img {
 .post-item:last-child {
   border-bottom: none;
 }
+
+#logoutBtn {
+  display: none;
+}
