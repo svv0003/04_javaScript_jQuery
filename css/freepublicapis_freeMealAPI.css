@@ -47,3 +47,7 @@ h1 {
 .slide.active {
   display: block;
 }
+
+#strMealThumb {
+  max-width: 100%;
+}
