@@ -20,11 +20,6 @@ function randomMenu() {
       ingredients += `${ingredient} : ${measure}<br>`;
     }
     $("#strIngredient").html(`재료 :<br>${ingredients}`);
-
-    $(".tab").removeClass("active");
-    $("[data-tab='meal']").addClass("active");
-    $(".slide").slideUp(200);
-    $("#strMeal, #strArea, #strInstructions").slideDown(1000);
   });
 }
 
