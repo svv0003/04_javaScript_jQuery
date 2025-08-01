@@ -16,7 +16,7 @@ function randomMenu() {
     let ingredients = "";
     for (let i = 1; i < 20; i++) {
       const ingredient = `meal.strIngredient${i}`;
-      const measure = `meal.strMeasure${i}`;
+      const measure = `meal[strMeasure${i}]`;
       ingredients += `${ingredient} : ${measure}<br>`;
     }
     $("#strIngredient").html(`재료 :<br>${ingredients}`);

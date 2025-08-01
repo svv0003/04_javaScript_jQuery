@@ -50,4 +50,9 @@ h1 {
 
 #strMealThumb {
   max-width: 100%;
+  text-align: center;
+}
+
+#strMealThumb img {
+  max-width: 100%;
 }

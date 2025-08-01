@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>갤러리</title>
+    <title>error 확인 페이지</title>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -28,21 +28,20 @@
     </nav>
 
     <div class="container">
-      <h1>갤러리</h1>
-      <div class="section">
-        <p>귀여운 동물 사진을 랜덤으로 가져와보세요!</p>
-        <div id="dogResult" class="result"></div>
-
-        <p style="margin-top: 30px">귀여운 고양이 사진들을 감상하세요!</p>
-        <div id="" style="text-align: center; margin: 20px 0">
-          <button id="prevBtn">이전페이지</button>
-          <span id="pageInfo" style="padding: 20px 40px">1 페이지</span>
-          <button id="nextBtn">다음페이지</button>
-        </div>
-        <div id="catResult" class="result"></div>
-      </div>
+      <h1>⚠️ 에러 테스트</h1>
+      <p>다양한 HTTP 에러 상황을 테스트해보기!</p>
+      <select id="errorSelect">
+        <option value="">에러 타입을 선택하세요.</option>
+        <option value="403">403</option>
+        <option value="404">404</option>
+        <option value="500">500</option>
+        <option value="timeOut">timeOut</option>
+        <option value="network">network</option>
+      </select>
+      <button id="errorBtn">에러 확인하기</button>
+      <div id="errorResult" class="result"></div>
     </div>
-
-    <script src="../js/gallery.js"></script>
+    
+    <script src="../js/error.js"></script>
   </body>
 </html>
