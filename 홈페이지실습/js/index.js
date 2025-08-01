@@ -41,11 +41,11 @@ function loginCheck() {
         $("#logoutBtn").show();
         $("#loginResult").html(
           `
-      <div class="success">
-      <p><strong>로그인 성공!</strong></p>
-      <p>${username}님, 환영합니다.</p>
-      </div>
-      `
+          <div class="success">
+          <p><strong>로그인 성공!</strong></p>
+          <p>${username}님, 환영합니다.</p>
+          </div>
+          `
         );
       } else {
         $("#loginResult").html(
