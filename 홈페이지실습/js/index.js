@@ -81,3 +81,4 @@ function logoutCheck() {
     $("#loginResult").html("");
   }, 1000);
 }
+
