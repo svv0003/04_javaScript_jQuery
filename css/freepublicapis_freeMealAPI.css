@@ -1,0 +1,49 @@
+button.tab {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button.tab:hover {
+  background-color: #ec407a;
+}
+
+button.tab.active {
+  background-color: #ed175f;
+}
+
+body {
+  background-color: #fff8e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 600px;
+}
+
+h1 {
+  color: #ed175f;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.slide {
+  display: none;
+  margin: 10px auto;
+  max-width: 100%;
+  text-align: left;
+  font-size: 16px;
+}
+
+.slide.active {
+  display: block;
+}

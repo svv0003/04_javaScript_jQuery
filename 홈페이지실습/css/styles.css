@@ -199,19 +199,24 @@ img {
 }
 
 /* 갤러리 */
+#catResult {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+}
 .cat-card {
   display: inline-block;
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
-  background-color: white;
+  background: white;
 }
 
 .cat-detail {
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
-  border-radius: 50px;
+  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -225,7 +230,7 @@ img {
   display: flex;
   align-items: center;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(255, 252, 252, 0.3);
 }
 
 .cat-detail-show {

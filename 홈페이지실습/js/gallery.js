@@ -19,6 +19,7 @@ $(function () {
     if (현재페이지 > 1) {
       --현재페이지;
       getCats();
+      $("#pageInfo").html(`${현재페이지} 페이지`)
     } else {
       alert("첫 번째 페이지입니다.");
     }
@@ -26,6 +27,7 @@ $(function () {
   $("#nextBtn").click(function () {
     ++현재페이지;
     getCats();
+    $("#pageInfo").html(`${현재페이지} 페이지`)
   });
 });
 
@@ -36,17 +38,21 @@ function randomDog() {
 }
 
 function getCats() {
-  $.get("https://api.thecatapi.com/v1/images/search?limit=10")
-  .done(function (data) {
-    const catImages = data.map(
+  //https://api.thecatapi.com/v1/images/search?limit=10
+  $.get("https://api.thecatapi.com/v1/images/search?limit=10").done(function (
+    data
+  ) {
+    const catImages = data
+      .map(
         (cat) =>
-          `
-          <div class="cat-dard">
-            <img src="${cat.url}" class="cat-detail" onclick="showFullImg('${cat.url})">
-          </div>
-          `
+          `   <div class="cat-card">
+                <img src = " ${cat.url}" 
+                     class="cat-detail"  
+                     onclick="showFullImg('${cat.url}')"  />
+             </div>
+                `
       )
-      .join();
+      .join("");
     $("#catResult").html(
       `
         ${catImages}
@@ -56,6 +62,9 @@ function getCats() {
 }
 
 // 이미지 클릭 시 큰 이미지로 볼 수 있도록 설정
+// .prepend() : 맨 앞에 새로운 것을 이어서 추가
+// .append()  : 맨 뒤에 새로운 것을 이어서 추가
+// .html()    : 내용 전체 교체
 function showFullImg(imageUrl) {
   $("#catResult").prepend(
     `
@@ -66,8 +75,9 @@ function showFullImg(imageUrl) {
   );
 }
 
-// close() open() 과 같은 예약어 메소드나 함수 매소드 변수명으로 사용 지양
 // 큰 이미지 클릭 시 이미지 닫기 설정
+// close() open() 과 같은 예약어 메소드나 함수 명칭으로 변수명 사용하는 것을 지양
+// 각 회사 개발자가 만든 듯한 명칭으로 함수, 메소드 변수명을 만드는 것이 좋다.
 function closeFullImg() {
   $("#abc").remove();
 }
