@@ -9,27 +9,26 @@ function displayProducts() {
 
   // #product-grid 내부에
   $("#product-grid").html(
-    productList.map(
-      (product) =>
-        `
-       <div class="product-card">
-        <img src="${product.image}" alt="${product.name}" />
-        <div class="product-info">
-          <h3 class="product-name">${product.name}</h3>
-          <p class="product-price">${Number(
-            product.price
-          ).toLocaleString()}원</p>
-        </div>
-      </div>
+    productList
+      .map(
+        (product) => `
+            <div class="product-card">
+                <img src="${product.image}" alt="${product.name}" />
+                <div class="product-info">
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-price">${Number(
+                  product.price
+                ).toLocaleString()}원</p>
+                </div>
+            </div>
       `
-    ).join("")
+      )
+      .join("")
   );
   // map 형태로 내부에 실습코드 -> 제품목록.js 추가
-
-
 }
 
-function deleteProducts(){
+function deleteProducts(e) {
   // a의 href로 이동하는 기본 동작 방지
   e.preventDefault();
 
@@ -44,7 +43,7 @@ function deleteProducts(){
   if(cf == true){
   }
   */
-  if(confirm("정말 모든 제품을 삭제하시겠습니까?")){
+  if (confirm("정말 모든 제품을 삭제하시겠습니까?")) {
     // confirm에서 확인을 누른다면 localStorage에 productList에서 데이터만 제거
     localStorage.removeItem("productList");
 
@@ -54,5 +53,4 @@ function deleteProducts(){
     // 현재 페이지 새로 고침 (window. 생략 가능!!)
     location.reload();
   }
-  
 }
