@@ -2,7 +2,7 @@ $(function () {
   showUsers();
 });
 
-function showUsers(){
+function showUsers() {
   // 기존 회원 목록 가져오기 (엾으면 빈 배열 형태)
   // 가져온 값을 userList 변수명에 담기
   let userList = JSON.parse(localStorage.getItem("userList") || "[]");
@@ -10,8 +10,8 @@ function showUsers(){
   // 사용자 총 회원 수 표시 - users.length
   // 사용자가 없으면 users.length === 0, no-users 볼 수 있음
   // map 사용해서 HTML로 소비자가 유저 리스트 목록을 확인할 수 있도록 설정
-  const userHTML = users.map(
-    u => 
+  const userHTML = userList.map(
+    (u) =>
       `
       <div class="user-item">
         <div class="user-id">아이디 : ${u.username}</div>

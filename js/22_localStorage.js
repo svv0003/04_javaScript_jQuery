@@ -46,7 +46,6 @@ function signUp(e){
 
   배열이나 목록은 문자열로 저장된 형태를 배열, 리스트 형태로 변환해서
   JavaScript 내부에서 활용할 것이기 때문에 변환은 필수이다.
-  
   */
   let userList = JSON.parse(localStorage.getItem("userList") || "[]");
 
@@ -72,6 +71,18 @@ function signUp(e){
   localStorage.setItem("userpw", userpw);
 
   // 모두 저장한 뒤 결과 페이지로 이동
+  /*
+  window    : (내장 객체) javaScript에서 모든 객체의 최상위 부모
+              실질적으로 JavaScript 내 모든 예약어를 지닌 존재
+              document, location, history, console, alert와 같은 객체가 window 내부에 존재한다.
+              원래는 window.document.getElementById() 형태가 맞지만 사용 빈도가 높으면 생략이 가능하다.
+
+  location        : 현재 페이지의 URL 정보를 담은 객체
+  location.reload : 페이지 새로고침
+  location.href   : 현재페이지에서 ~로 이동  
+  window 내 컴퓨터에서 .주소가 .링크로 되어있는 =로 이동
+  
+  */
   window.location.href = "22_result.html";
 
 
