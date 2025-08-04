@@ -1,7 +1,31 @@
-$(function(){
+$(function () {
   $(".register-btn").click(addProduct);
-})
+});
 
-function addProduct(){
+function addProduct(e) {
+  // 제품등록 일지정지
+  e.preventDefault();
 
+  const productName = $("#productName").val();
+  const productPrice = $("#productPrice").val();
+  const productImg = $("#productImage").val();
+
+  // 기존 배열 목록 가져오기
+  // localStorage 문자열만 취금하므로, [] 또한 "" 감싸서 문자열 처리
+  let productList = JSON.parse(localStorage.getItem("productList") || "[]");
+
+  const newProduct = {
+    name: productName,
+    price: productPrice,
+    image: productImg,
+  };
+
+  productList.push(newProduct);
+
+  localStorage.setItem("productList", JSON.stringify(productList));
+  localStorage.setItem("name", productName);
+  localStorage.setItem("price", productPrice);
+  localStorage.setItem("image", productImg);
+
+  window.location.href = "23_제품목록.html";
 }
