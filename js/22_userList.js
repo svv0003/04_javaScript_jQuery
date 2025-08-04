@@ -3,20 +3,9 @@ $(function () {
 });
 
 function showUsers(){
-  // localStorage에서 모든 데이터를 담을 수 있는 리스트 변수명 생성
-  // localStorage에 저장된 정보를 목록 형태로 users 내부에 담아둘 것
-  const users = [];
-
-  // username, userpw 있으면 배열에 추가
-  const username = localStorage.getItem("username");
-  const userpw = localStorage.getItem("userpw");
-
-  if (username && userpw) {
-    users.push({
-      id: username,
-      pw: userpw,
-    });
-  }
+  // 기존 회원 목록 가져오기 (엾으면 빈 배열 형태)
+  // 가져온 값을 userList 변수명에 담기
+  let userList = JSON.parse(localStorage.getItem("userList") || "[]");
 
   // 사용자 총 회원 수 표시 - users.length
   // 사용자가 없으면 users.length === 0, no-users 볼 수 있음
@@ -25,8 +14,8 @@ function showUsers(){
     u => 
       `
       <div class="user-item">
-        <div class="user-id">아이디 : ${u.id}</div>
-        <div class="user-pw">비밀번호 : ${u.pw}</div>
+        <div class="user-id">아이디 : ${u.username}</div>
+        <div class="user-pw">비밀번호 : ${u.password}</div>
       </div>
       `
   );
