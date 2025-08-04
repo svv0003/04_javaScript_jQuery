@@ -23,9 +23,6 @@ function addProduct(e) {
   productList.push(newProduct);
 
   localStorage.setItem("productList", JSON.stringify(productList));
-  localStorage.setItem("name", productName);
-  localStorage.setItem("price", productPrice);
-  localStorage.setItem("image", productImg);
 
   window.location.href = "23_제품목록.html";
 }
