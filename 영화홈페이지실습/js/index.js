@@ -8,16 +8,16 @@ $(function () {
 function loadMovies() {
   $.get("https://ghibliapi.vercel.app/films")
     .done(function (data) {
-      $(".loading").hide();
+      // $(".loading").hide();
       displayMovies(data);
     })
-    .fail();
 }
 
 // 영화 목록 표시
 function displayMovies(movies) {
-  $(".movies").html(
-    movies.map((movie) =>
+const movieCard = movies
+    .map(
+      (movie) =>
         `
           <div class="movie">
               <h3>${movie.title}</h3>
@@ -32,8 +32,8 @@ function displayMovies(movies) {
               <p><img src="${movie.image}"></p>
           </div>
         `
-    )
-  );
+    ).join("");
+  $(".movies").html(movieCard);
 }
 
 // 상세페이지 이동
