@@ -24,9 +24,19 @@ $(function () {
     // - 입력값 가져오기
     // - localStorage에 저장
     // - 성공 메시지 표시
-
+    
     const userEmail = $("#inputEmail").val();
     const userPhone = $("#phone").val();
+    
+    if (!userEmail) {
+      alert("이메일 중복확인을 하세요.");
+      return;
+    }
+
+    if (!userPhone) {
+      alert("연락처를 입력하세요.");
+      return;
+    }
 
     const newUser = {
       userEmail: userEmail,
@@ -38,5 +48,10 @@ $(function () {
     localStorage.setItem("userList", JSON.stringify(userList));
     localStorage.setItem("userEmail", userEmail);
     localStorage.setItem("userPhone", userPhone);
+
+    alert("회원가입이 완료되었습니다.")
+
+    $("#inputEmail").val("");
+    $("#phone").val("");
   });
 });

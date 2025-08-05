@@ -9,7 +9,7 @@ $(function () {
     // - 결과 메시지 표시
     // - 중복되지 않으면 "사용하기" 버튼 활성화
 
-    const userEmail = localStorage.getItem("userEmail");
+    const userEmail = localStorage.getItem(email);
     if (!userEmail) {
       // 버튼 활성화
       alert("사용 가능한 이메일입니다.");
@@ -34,3 +34,16 @@ $(function () {
     window.close();
   });
 });
+
+
+/*
+$("#send").click(function() {
+    const email = $("#childEmail").val().trim();
+    
+    // 부모창의 이메일 입력란에 값 전달
+    opener.document.$("#inputEmail").val(email);
+    
+    // 팝업창 닫기
+    window.close();
+});
+*/
