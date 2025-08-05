@@ -46,6 +46,17 @@ function searchData(e) {
   let userList = JSON.parse(localStorage.getItem("userList") || "[]");
 
   // 배열 내부에 검색한 값이 존재하는지 확인하기
+  /**
+   *  userList.filter(data => data.name === searchValue);
+   * 
+   *  userList                      전달 받은 목록 중에서
+   *          .filter()             걸러낼 것이다.
+   *                  data          data 변수명에 목록 정보를 하나씩 담아서
+   *                  data.name     data 내부 이름과 검색된 value가 일치하는 것만
+   *                  searchValue   searchValue 변수명에 담을 것이다.
+   */
+  // filter 내부 작성된 데이터는 filter에서 사용자가 검색한 데이터와 일치하는지 확인하기 위해 사용
+  // map 내부에 작성된 데이터는 검색완료된 목록을 하나씩 사용자가 걸러낸 결과값을 보여주기 위해 사용
   const searchResult = userList.filter(data => data.name === searchValue);
 
   // 검색한 값이 존재한다면

@@ -45,12 +45,38 @@ function addFoodData(e) {
 
 
 
+// 검색 결과가 존재할 경우 검색 결과를 보여주기
 function searchFoodData(e) {
   e.preventDefault();
 
-  // 
+  const searchValue = $("#searchValue").val().trim();
 
+  let foodList = JSON.parse(localStorage.getItem("foodList") || "[]");
+
+  // 목록에 검색 값과 일치하는 값이 있는지를 확인하는 방법
+  // const searchResult = foodList.filter(data => data.foodName === searchValue);
+
+  // 목록 리스트에 해당하는 값이 아닌 검색 값을 포함하는지를 확인하는 방법
+  // 부분 문자열 검색을 위해 includes() 사용, 대소문자 무시하려면 toLowerCase() 추가
+  const searchResult = foodList.filter(data => 
+    data.foodName.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  let html = `<h3>메뉴 검색 결과</h3>`;
+  if (searchResult.length > 0) {
+    html += searchResult.map(
+      (data)=>
+      `<div class="item-row">[${data.category}] ${data.foodName} : ${data.price}원 (${data.createAt})<br><br></div>`
+    ).join("");
+    console.log("있는 메뉴")
+  }  else {
+    html += `존재하지 않는 메뉴입니다.`;
+    console.log("없는 메뉴")
+  }
+  // display:none;를 볼 수 있도록 설정하는 기능
+  $("#searchResult").html(html).show();
 }
+
 
 
 
