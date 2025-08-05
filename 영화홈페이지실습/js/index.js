@@ -15,8 +15,7 @@ function loadMovies() {
 
 // 영화 목록 표시
 function displayMovies(movies) {
-const movieCard = movies
-    .map(
+const movieCard = movies.map(
       (movie) =>
         `
           <div class="movie">
