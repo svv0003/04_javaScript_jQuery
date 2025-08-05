@@ -1,6 +1,8 @@
 $(function(){
   $("#saveData").click(saveDataFn);
   $("#getBtn").click(getBtnFn)
+  $("#showAllBtn").click(showAllBtnFn)
+  $("#clearAllBtn").click(clearAllBtnFn)
 })
 
 function saveDataFn(e){
@@ -65,6 +67,35 @@ localStorage 내부에는 문자열만 저장 가능한 이유
     문자열은 아무 기능이 없다.
 2) 인터넷 주소, 즐겨찾기, 간단한 데이터 읽는 정도를 저장
     사용자가 인터넷 사용함에 있어 불편함을 느끼지 않을 최소한의 저장 자료형을 사용한다.
-
-
 */
+
+
+function showAllBtnFn(e){
+  e.preventDefault();
+  
+  let html = `<h3>크롬 브라우저에 저장된 데이터들 확인</h3><ul>`;
+  for(let i=0; i<localStorage.length; i++){
+    const key = localStorage.key(i);
+    html +=
+    `
+    <li><strong>${key}</strong>:
+    ${localStorage.getItem(key)}</li>
+    `
+  }
+  html += `</ul>`
+  $("#allData").html(html);
+}
+// key 명칭을 가져올 때는 idx 번호를 활용해서 ~번 째에 존재하는 key 명칭을,
+// 가져온 key 명칭을 활용해서 값을 가져올 수 있다.
+// set 저장할 때는 순차적으로 0번부터 저장된다.
+// for문보다 localStorage에 리스트 목록을 저장하는 것이 메모리 활용적이다.
+// -> localStorage에 데이터를 저장할 때 배열, 리스트 형태로 저장하는 것이다.
+
+function clearAllBtnFn(e){
+  e.preventDefault();
+
+  if (confirm("모든 데이터를 삭제하시겠습니까?")){
+    localStorage.clear();
+  }
+  showAllDataFn();
+}
