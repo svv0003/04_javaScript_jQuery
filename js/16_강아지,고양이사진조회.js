@@ -20,7 +20,8 @@ function getCats() {
   $("#result1").html(
     '<div class="loading">🐱 고양이 사진을 가져오는 중...</div>'
   );
-  $.get("https://api.thecatapi.com/v1/images/search?limit=3").done(function (
+  $.get("https://api.thecatapi.com/v1/images/search?limit=3")
+  .done(function (
     data
   ) {
     // limit=3  -> 3장이어도 무조건 10장 나오는 사이트!!!
