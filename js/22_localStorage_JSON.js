@@ -39,12 +39,42 @@ function addData(e) {
 
 function searchData(e) {
   e.preventDefault();
+
+
 }
 
 function showAllData(e) {
   e.preventDefault();
+
+  // 로컬스토리지에 저장된 목록 가져오기
+  let userList = JSON.parse(localStorage.getItem("userList") || "[]");
+  console.log("사용자 목록 : ", userList);
+  let html = `<h3>저장된 사용자 목록 (총 ${userList.length}명)</h3>`;
+
+  // for문 사용해서 userList 값을 모두 [i]로 가져오기
+  for (let i=0; i<userList.length; i++) {
+    const key = userList[i];
+    html +=
+    `
+    ${key.name}님<br>
+    ${key.age}세<br>
+    ${key.email}<br>
+    가입일자 : ${key.createAt}<br><br>
+    `
+  }
+  $("#allData").html(html);
 }
 
 function clearAllData(e) {
   e.preventDefault();
+
+  // 삭제할 건지 한 번 더 확인
+  if (confirm("정말 삭제하시겠습니까?")) {
+    // localStorage.removeItem("userList");
+    //    로컬스토리지 내부의 특정 키만 삭제
+    // localStorage.clear();
+    //    로컬스토리지 내부에 존재하는 모든 데이터 삭제
+    localStorage.clear();
+    $("#allData").html("");
+  }
 }
