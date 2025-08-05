@@ -57,6 +57,15 @@ function searchData(e) {
    */
   // filter 내부 작성된 데이터는 filter에서 사용자가 검색한 데이터와 일치하는지 확인하기 위해 사용
   // map 내부에 작성된 데이터는 검색완료된 목록을 하나씩 사용자가 걸러낸 결과값을 보여주기 위해 사용
+
+  // .filter()    : 조건에 맞는 모든 요소를 배열로 반환한다.
+  //                검색, 수정할 때 많이 사용한다.    결과는 목록, 배열
+  //                배열로 데이터를 가져온다. => .length 메소드 사용 가능
+  // .some()      : 조건에 맞는 요소가 하나라도 있으면 true, 결과는 boolean
+  // .find()      : 조건에 맞는 첫 번째 요소만 반환
+  // .includes()  : 문자열이나 배열에서 특정 값이 포함하는지를 확인하는 메소드
+  //                filter() 보다 더 많이 검색에 사용된다.
+
   const searchResult = userList.filter(data => data.name === searchValue);
 
   // 검색한 값이 존재한다면
