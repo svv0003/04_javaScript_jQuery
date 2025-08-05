@@ -29,10 +29,10 @@ function addData(e) {
     createAt: new Date().toLocaleString("ko-KR"),
   }
 
-  // 기존 userList에 새로운 유저 정보 추가
+  // 기존 userList에 새로운 유저 정보 추가하기
   userList.push(newUser);
 
-  // localStorage에 문자열 변환된 userList를 저장
+  // localStorage에 문자열 변환된 userList를 저장하기
   localStorage.setItem("userList", JSON.stringify(userList));
   alert("로컬 스토리지에 저장되었습니다.")
 }
@@ -40,7 +40,35 @@ function addData(e) {
 function searchData(e) {
   e.preventDefault();
 
+  const searchValue = $("#searchValue").val().trim();
 
+  // 로컬스토리지에 저장된 목록 가져오기
+  let userList = JSON.parse(localStorage.getItem("userList") || "[]");
+
+  // 배열 내부에 검색한 값이 존재하는지 확인하기
+  const searchResult = userList.filter(data => data.name === searchValue);
+
+  // 검색한 값이 존재한다면
+  let html = `<h3>검색 결과</h3>`;
+  if (searchResult.length > 0) {
+    html += searchResult.map(
+      (data)=>
+      `
+      <div class="item-row">
+        <strong>${data.name}님</strong><br>
+        나이 : ${data.age}세<br>
+        이메일 : ${data.email}<br>
+        가입일자 : ${data.createAt}<br>
+      </div>
+      `
+    ).join("");
+  } 
+  // 존재하지 않는다면
+    else {
+    html += `존재하지 않는 회원입니다.`;
+  }
+  // 해당 값 출력하기
+  $("#searchResult").html(html);
 }
 
 function showAllData(e) {
