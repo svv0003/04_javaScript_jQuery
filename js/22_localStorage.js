@@ -96,6 +96,7 @@ function clearAllBtnFn(e){
 
   if (confirm("모든 데이터를 삭제하시겠습니까?")){
     localStorage.clear();
+    $("#allData").html("");
   }
   showAllBtnFn();
 }
