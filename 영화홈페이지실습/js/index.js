@@ -9,6 +9,7 @@ function loadMovies() {
   $.get("https://ghibliapi.vercel.app/films")
     .done(function (data) {
       // $(".loading").hide();
+      $(".loading").hide();
       displayMovies(data);
     })
 }
