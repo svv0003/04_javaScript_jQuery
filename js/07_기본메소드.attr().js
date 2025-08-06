@@ -1,6 +1,6 @@
 $(function () {
 
-  $(".attrDiv").attr("style", "margin-top:10px;")
+  $(".attrDiv").attr("style", "margin-top:wheat;")
 
   $("#changeImage").click(imgFn);
   $("#changeAlt").click(altFn);
@@ -75,5 +75,5 @@ function setFn(e) {
 function getFn(e) {
   e.preventDefault();
   const dataId = $("#dataElement").attr("data-id");
-  alert("data-id : ", dataId || "없음");
+  alert("data-id : " + (dataId || "없음"));
 }

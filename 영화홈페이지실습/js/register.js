@@ -11,7 +11,7 @@ function signup() {
   const password = $("#password").val();
   const confirmPassword = $("#confirmPassword").val();
 
-  // 비밀번호 확인이 일치한지?
+  // 비밀번호 확인이 일치한가?
   if (password !== confirmPassword) {
     alert("비밀번호 확인이 일치하지 않습니다.")
     return;
