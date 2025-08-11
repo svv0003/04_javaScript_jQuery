@@ -9,11 +9,11 @@ $(function () {
 
   // 엔터키 검색 추가
   // Enter는 which 값으로 13번 위치!!
-  $("searchInput").keypress(
+  $("#searchInput").keypress(
     function(e){
       // if (e.key === "enter"){
       if (e.which === 13){
-        searchFn();
+        searchFn(e);
       }
     }
   )
@@ -21,6 +21,7 @@ $(function () {
   // 실시간 검색 기능 추가
   $("#searchInput").on("input", searchFn);
 });
+
 // 책 데이터 변수
 let books = {};
 
